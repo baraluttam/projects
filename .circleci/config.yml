@@ -11,7 +11,7 @@ jobs:
           command: |
               export DOCKER_BUILDKIT=1
               TAG=v${CIRCLE_BUILD_NUM}
-              IMAGE=liveauctioneers/hammer-ui
+              IMAGE=liveauctioneers/projects
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} 
               docker build -t ${IMAGE}:${TAG} . --progress plain
               echo ${CIRCLE_BUILD_NUM} > build_num.txt 
