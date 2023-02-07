@@ -13,11 +13,11 @@ jobs:
           command: |
               export DOCKER_BUILDKIT=1
               TAG=v${CIRCLE_BUILD_NUM}
-              IMAGE=uttambaral98/projects
+              REPO=uttambaral98/projects
               docker login -u ${DOCKER_USER} -p ${DOCKER_PASS} 
-              docker build -t ${IMAGE}:${TAG} . --progress plain
+              docker build -t ${REPO}:${TAG} . --progress plain
               echo ${CIRCLE_BUILD_NUM} > build_num.txt 
               wait
-              docker push ${IMAGE}:${TAG}
-              docker tag ${IMAGE}:${TAG} ${IMAGE}:${CIRCLE_BRANCH} && docker push ${IMAGE}:${CIRCLE_BRANCH}
+              docker push ${REPO}:${TAG}
+              docker tag ${REPO}:${TAG} ${REPO}:${CIRCLE_BRANCH} && docker push ${REPO}:${CIRCLE_BRANCH}
     
