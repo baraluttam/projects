@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  publish:
     docker:
       - image: circleci/node
     steps:
@@ -20,4 +20,9 @@ jobs:
               wait
               docker push ${REPO}:${TAG}
               docker tag ${REPO}:${TAG} ${REPO}:latest && docker push ${REPO}:latest
-    
+
+workflows:
+  project_workflow:
+    jobs:
+      - publish:
+          context: docker
