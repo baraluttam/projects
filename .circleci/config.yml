@@ -19,5 +19,5 @@ jobs:
               echo ${CIRCLE_BUILD_NUM} > build_num.txt 
               wait
               docker push ${REPO}:${TAG}
-              docker tag ${REPO}:${TAG} ${REPO}:${CIRCLE_BRANCH} && docker push ${REPO}:${CIRCLE_BRANCH}
+              docker tag ${REPO}:${TAG} ${REPO}:latest && docker push ${REPO}:latest
     
